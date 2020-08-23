@@ -8,15 +8,15 @@ const initialState = {
     todos: [],
 }
 
-const rootReducer =(state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_TODO:
-            return {...state, todos: state.todos.concat({ id: new Date(), todo: action.data})};
+            return { ...state, todos: state.todos.concat({ id: new Date(), text: action.value }) };
         case actionTypes.REMOVE_TODO:
-            const updateArray = state.todos.filter((saved) => saved.id !== action.todoItem)
-            return {...state, todos: updateArray};
-            default:
-                return state;
+            const updateArray = state.todos.filter((item) => item.id !== action.item)
+            return { ...state, todos: updateArray };
+        default:
+            return state;
     }
 }
 
